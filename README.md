@@ -1,57 +1,58 @@
 # thesis-workflow-cn
 
-`thesis-workflow-cn` is a Codex skill pack for Chinese undergraduate thesis workflows. It provides one public entry skill and several internal modules for topic selection, literature retrieval, literature review drafting, proposal drafting, and Word document handling.
+`thesis-workflow-cn` 是一个面向中文本科毕业论文流程的 Codex Skill 包。它把选题、文献检索、文献综述、开题报告和 Word 文档处理整合为一个入口 skill，并通过内部模块完成各阶段任务。
 
-The current package is designed for Chinese thesis-writing scenarios. It emphasizes stage-by-stage handoff, anti-fabrication rules for references, and Word deliverable generation for literature review and proposal stages.
+这个 skill 主要服务于中文论文写作场景，重点约束包括：阶段式交接、完成一个阶段后询问是否继续、参考文献防虚构、基于真实材料写作，以及文献综述和开题报告阶段默认生成 Word 文档。
 
-## What It Includes
+## 包含内容
 
-- `thesis-workflow-cn`: the public workflow entrypoint.
-- `undergraduate-thesis-topic`: topic selection, narrowing, and feasibility evaluation.
-- `cnki-cssci-search`: CNKI/CSSCI/C-journal and English title/abstract retrieval workflow.
-- `workbuddy-cnki-webbridge-search`: WorkBuddy-only CNKI retrieval workflow through Kimi WebBridge.
-- `literature-review-cn`: Chinese literature review drafting from provided records and abstracts.
-- `thesis-proposal-cn`: Chinese undergraduate proposal drafting.
-- `docx-editor-cn`: Word `.docx` creation and editing helpers.
+- `thesis-workflow-cn`：公开入口 skill，负责识别论文任务阶段并调度内部模块。
+- `undergraduate-thesis-topic`：本科论文选题、题目收窄、可行性评估和题目优化。
+- `cnki-cssci-search`：知网、CSSCI、C 刊以及英文题名和摘要检索流程。
+- `workbuddy-cnki-webbridge-search`：WorkBuddy 场景下通过 Kimi WebBridge 进行知网检索的专用流程。
+- `literature-review-cn`：基于用户提供或实际检索到的文献记录和摘要撰写中文文献综述。
+- `thesis-proposal-cn`：中文本科开题报告撰写。
+- `docx-editor-cn`：Word `.docx` 创建、模板填充和文档编辑辅助模块。
 
-## Install
+## 安装方式
 
-Clone this repository, then link the skill directory into your Codex skills folder.
+克隆本仓库，然后把 skill 目录链接到 Codex 的 skills 目录。
 
-On Windows PowerShell:
+Windows PowerShell 示例：
 
 ```powershell
-git clone https://github.com/<your-name>/thesis-workflow-cn.git
+git clone https://github.com/MMKLN0/thesis-workflow-cn.git
 cmd /c mklink /J "%USERPROFILE%\.codex\skills\thesis-workflow-cn" "<repo-path>\skills\thesis-workflow-cn"
 ```
 
-Restart Codex after linking the skill.
+其中 `<repo-path>` 替换为你本地克隆后的仓库路径。链接完成后，重启 Codex 让 skill 生效。
 
-## Usage
+## 使用方式
 
-Ask Codex for a Chinese undergraduate thesis workflow task, for example:
+可以直接向 Codex 提出中文本科论文流程任务，例如：
 
 ```text
 帮我从本科论文选题开始，完成文献综述和开题报告
 ```
 
-The entry skill should route the request through these default stages:
+入口 skill 默认按以下阶段推进：
 
 1. 选题确认
 2. 文献材料准备
 3. 文献综述写作并转 Word
 4. 开题报告写作并转 Word
 
-After each major stage, the skill asks whether to continue to the next stage instead of silently running the whole process.
+每完成一个主要阶段后，skill 会先询问是否继续进入下一阶段，而不是默认一次性静默跑完整个流程。
 
-## Important Rules
+## 重要规则
 
-- References must come from user-provided or actually retrieved records.
-- Missing bibliography fields must not be guessed.
-- If a project has not been implemented, the thesis text must describe it as planned design, expected implementation, prototype, or system architecture work.
-- Word layout correctness should only be claimed after actual render or visual verification.
+- 参考文献必须来自用户提供或实际检索到的记录。
+- 缺失的作者、年份、期刊、页码、DOI 等文献信息不能凭空补全。
+- 如果项目尚未真实实现，论文内容必须写成拟设计、预期实现、原型或系统架构工作，不能假装已经完成开发、实验或测试。
+- Word 文档的版式正确性只有在实际渲染或视觉检查完成后才能声称已经验证。
+- 中文论文交付物默认使用中文表达，并保留用户已确认的题目、专业、研究对象、模板和格式要求。
 
-## Repository Layout
+## 仓库结构
 
 ```text
 skills/
@@ -62,16 +63,28 @@ skills/
     modules/
 ```
 
-## Third-Party Code
+核心入口在：
 
-The bundled `docx-editor-cn` module includes its own MIT license file at:
+```text
+skills/thesis-workflow-cn/SKILL.md
+```
+
+内部模块集中在：
+
+```text
+skills/thesis-workflow-cn/modules/
+```
+
+## 第三方代码
+
+仓库内包含的 `docx-editor-cn` 模块带有独立 MIT 许可证文件：
 
 ```text
 skills/thesis-workflow-cn/modules/docx-editor-cn/LICENSE.txt
 ```
 
-Keep that notice when redistributing or modifying the repository.
+重新分发或修改本仓库时，请保留该许可证声明。
 
-## License
+## 许可证
 
-This repository is released under the MIT License. See `LICENSE` for details.
+本仓库使用 MIT License。详见 `LICENSE`。
