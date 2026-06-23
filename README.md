@@ -16,7 +16,7 @@
 
 ## 安装方式
 
-克隆本仓库，然后把 skill 目录链接到 Codex 的 skills 目录。
+推荐克隆本仓库，然后把 skill 目录链接到 Codex 的 skills 目录。
 
 Windows PowerShell 示例：
 
@@ -26,6 +26,17 @@ cmd /c mklink /J "%USERPROFILE%\.codex\skills\thesis-workflow-cn" "<repo-path>\s
 ```
 
 其中 `<repo-path>` 替换为你本地克隆后的仓库路径。链接完成后，重启 Codex 让 skill 生效。
+
+如果无法访问 GitHub，也可以下载压缩包版本：
+
+1. 解压 `thesis-workflow-cn.zip` 到任意本地目录。
+2. 在 PowerShell 中执行：
+
+```powershell
+cmd /c mklink /J "%USERPROFILE%\.codex\skills\thesis-workflow-cn" "<解压目录>\skills\thesis-workflow-cn"
+```
+
+其中 `<解压目录>` 替换为压缩包解压后的目录。链接完成后，重启 Codex。
 
 ## 使用方式
 
