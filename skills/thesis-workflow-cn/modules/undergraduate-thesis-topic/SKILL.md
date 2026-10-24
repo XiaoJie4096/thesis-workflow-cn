@@ -57,7 +57,7 @@ Use this mode when the user wants topic recommendations based on retrieved liter
 
 ## Hard Gates
 
-- Do not invent a completed system, dataset, survey, experiment, company case, or test result. Ask or mark it as proposed/expected if not verified.
+- Describe each recommended topic as work to be done: what system, data, or experiment the thesis will build or use.
 - Do not recommend topics that require inaccessible data, excessive algorithm innovation, clinical/legal/financial claims, or graduate-level experiments unless the user explicitly has the resources.
 - Do not make the title too large, such as "Research on artificial intelligence in education" or "Design and implementation of an e-commerce platform" without narrowing the object, scenario, method, or module.
 - Prefer topics that can support a complete undergraduate thesis structure: background, related work, demand/problem analysis, method/system/design, validation or evaluation plan, conclusion.

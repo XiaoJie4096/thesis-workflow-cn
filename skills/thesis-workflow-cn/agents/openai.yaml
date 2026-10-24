@@ -1,4 +1,4 @@
 interface:
   display_name: "论文完整流程"
-  short_description: "论文流程总入口，逐步推进并生成综述和开题Word"
-  default_prompt: "Use $thesis-workflow-cn as the single entry for my Chinese undergraduate thesis workflow, including topic selection, literature retrieval, review writing, proposal drafting, and Word output."
+  short_description: "论文流程总入口：选题、综述、开题、正文、图表、质检，逐步推进并生成Word"
+  default_prompt: "Use $thesis-workflow-cn as the single entry for my Chinese undergraduate thesis workflow, including topic selection, literature retrieval, review writing, proposal drafting, body outline, materials and gap report, chapter drafting, figures and tables, QC review, and full-thesis Word output."

@@ -15,6 +15,7 @@ A .docx file is a ZIP archive containing XML files.
 | Task | Approach |
 |------|----------|
 | Read/analyze content | `pandoc` or unpack for raw XML |
+| Full thesis from Markdown chapters | `node scripts/md2docx_thesis.js <chapters-dir> -o 论文.docx [--format format.json]` — see Full Thesis from Markdown below |
 | Create new document | `node scripts/new_doc.js` (edit CONTENT section first) |
 | Edit existing document | Unpack → edit XML → repack - see Editing Existing Documents below |
 | Insert 三线表 (XML editing) | `python scripts/table.py unpacked/ "1-1" "标题" --headers … --rows …` |
@@ -54,6 +55,43 @@ python scripts/accept_changes.py input.docx output.docx
 ```
 
 ---
+
+## Full Thesis from Markdown
+
+Use this for the thesis body stage (stage 10 of the main workflow). Chapters are written as Markdown following `../thesis-body-cn/references/markdown-conventions.md`, then assembled in one run.
+
+```bash
+cd modules/docx-editor-cn && npm install      # once
+node scripts/md2docx_thesis.js <论文项目>/chapters -o <论文项目>/output/论文.docx
+node scripts/md2docx_thesis.js a.md b.md -o out.docx --format format.json --no-toc
+```
+
+What it does:
+
+- Reads all `*.md` in the directory sorted by file name, or the listed files in order.
+- A4, 2.5 cm margins, 宋体小四 body with 2-character indent, 黑体 headings, Times New Roman for Latin text, centered page numbers, optional header text.
+- Each H1 starts a new page; a TOC field is inserted before the first numbered chapter (Word fills it in when the user updates fields: right-click → 更新域).
+- Headings are kept verbatim (write "第3章 需求分析", "3.1 可行性分析" in the Markdown). 摘要/Abstract/参考文献/致谢/附录/结论/总结与展望 H1s do not advance the chapter counter.
+- Images become `图章-序 图题` below the figure; `表：标题` + pipe table becomes `表章-序 标题` above a 三线表; `$$…$$` becomes a native Word equation numbered `（章-序）`; `[n]` citations become superscript; `【待补充：…】` is highlighted yellow; missing images become a yellow placeholder box.
+- Prints `written=`, counts of chapters/figures/tables/formulas, placeholders, and missing images. Report these to the user.
+
+Override formatting with a JSON file (any subset of keys; sizes in pt, margins in cm):
+
+```json
+{
+  "marginsCm": { "top": 2.5, "bottom": 2.5, "left": 3.0, "right": 2.5 },
+  "bodyFont": "SimSun", "headingFont": "SimHei", "latinFont": "Times New Roman",
+  "bodySize": 12, "h1Size": 16, "h2Size": 14, "h3Size": 12,
+  "captionSize": 10.5, "tableSize": 10.5, "refSize": 10.5, "codeSize": 9,
+  "lineSpacing": "20pt",
+  "header": "XX大学本科毕业论文",
+  "toc": true
+}
+```
+
+Map the school's requirements into this file before building (e.g. 小四 = 12, 五号 = 10.5, 三号 = 16, 四号 = 14; "固定值20磅" = `"20pt"`, "1.5倍行距" = `1.5`).
+
+Limits: cover page, originality declaration, and authorization pages are not generated; take them from the school template and merge in Word. Odd/even headers, section-based roman page numbers for front matter, and Word-native heading auto-numbering are not implemented. Without Word or LibreOffice, visual layout cannot be verified here; tell the user to open the file and check.
 
 ## Creating New Documents
 

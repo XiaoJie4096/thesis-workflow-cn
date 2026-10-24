@@ -180,8 +180,7 @@ Better narrowed versions:
 Computer science and software engineering:
 
 - Good topics need a concrete user group, scenario, feature set, and technology stack.
-- If no code exists, use "需求分析", "系统设计", "原型设计", or "方案研究".
-- Do not claim performance, security, or intelligent recommendation results without implementation or testing evidence.
+- A typical title is "基于……的……系统的设计与实现", covering requirements, design, implementation, and testing.
 
 Management, business, accounting, marketing:
 
@@ -284,12 +283,6 @@ Use this when the user wants an opening-report-ready direction:
 6. 总结与展望
 ```
 
-## Claim Discipline
+## Topic Language
 
-Use verified language:
-
-- If there is real implementation: "已实现", "可测试", "测试结果显示" only after seeing evidence.
-- If there is no implementation: "拟设计", "预期实现", "可通过功能测试验证", "可作为原型方案".
-- If there is no real data: "可通过问卷收集", "可基于公开资料分析", "建议补充访谈或案例材料".
-
-Do not fabricate literature, data, project status, screenshots, performance metrics, or school rules.
+Topic recommendations describe work the thesis will do: "拟设计并实现……", "通过功能测试验证……", "基于问卷数据分析……". Literature signals come from the retrieved records; school rules come from the user.

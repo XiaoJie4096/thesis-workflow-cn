@@ -41,8 +41,7 @@ Do not output both an "analysis version" and a "paste-ready version". Unless the
 - When no template is provided, use common Chinese proposal headings: 选题依据, 研究意义, 国内外研究现状, 研究内容, 研究方法, 论文提纲, 研究进度安排, 预期成果.
 - Prefer coherent paragraphs over long bullet lists for prose sections.
 - Keep claims concrete and bounded; avoid empty phrases such as "具有十分重要的意义" unless followed by specific value.
-- Do not say that retrieval, experiments, development, deployment, or testing has been completed unless the user provides evidence.
-- If content is a planned study or prototype, frame it as planned research, proposed design, expected implementation, or anticipated outcome.
+- A proposal describes the research before it is carried out: write 研究内容, 研究方法, and 预期成果 as planned work (拟设计、拟实现、预期达到).
 
 ## Optional Skill Coordination
 

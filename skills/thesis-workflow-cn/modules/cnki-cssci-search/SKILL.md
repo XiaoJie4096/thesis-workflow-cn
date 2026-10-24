@@ -22,7 +22,7 @@ For Chinese-only searches:
 For combined Chinese-English searches:
 
 ```text
-中文文献需要多少篇？英文文献需要多少篇？
+中文文献需要多少篇？英文文献需要多少篇？学校没有规定的话，默认中文 40 篇、英文 10 篇。
 ```
 
 Also clarify scope only when needed:

@@ -120,5 +120,3 @@ State expected deliverables modestly:
 - system prototype or design scheme if relevant;
 - requirement/design/testing documents if relevant;
 - practical suggestions or application reference.
-
-Do not claim verified effects, deployment outcomes, or completed tests unless evidence is provided.
