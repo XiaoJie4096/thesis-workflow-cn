@@ -153,7 +153,7 @@ Read `modules/thesis-outline-cn/SKILL.md` after the proposal (or when the user b
 
 Exit with `plan/大纲.md` and `plan/字数分配.json` confirmed by the user. Remind the user to send the outline to their supervisor before drafting.
 
-### Stage 6: Materials and Gap Report
+### Stage 6: Materials and Screenshot List
 
 Read `modules/thesis-materials-cn/SKILL.md` when the thesis depends on a real project, data, survey, or case.
 

@@ -7,7 +7,9 @@ description: Build the full chapter outline and word budget for a Chinese underg
 
 ## Core Positioning
 
-Use this skill to turn a confirmed title, proposal, and materials into a three-level thesis outline with a per-section word budget. The outline is the contract for every later stage: chapter writing, figure planning, and QC all read it. Do not draft chapter text in this stage.
+Use this skill to turn a confirmed title, proposal, and materials into a thesis outline with a per-section word budget. The outline is the contract for every later stage: chapter writing, figure planning, and QC all read it. Do not draft chapter text in this stage.
+
+The outline plans the finished, submitted thesis. The test chapter plans which cases, metrics, and result tables it reports; the body later writes those results as completed work.
 
 The outline must be confirmed by the user, and the user should be told to show it to their supervisor (指导老师) before drafting. Undergraduates usually cannot judge outline quality alone; a supervisor-approved outline prevents large rewrites later.
 
@@ -26,10 +28,10 @@ Ask only for what blocks a usable outline. Typical blocking questions: total wor
 
 1. Classify the thesis type and pick the base pattern from `references/outline-patterns.md`. For 系统设计与实现、算法模型改进、工程设计, it points to the type template in `../../references/paper-types/`; take the chapter skeleton, the variant matching the topic, and the word allocation from that template. Reuse the proposal's 论文提纲 when present; refine it instead of replacing it.
 2. Map every chapter and section to the concrete topic. No generic headings such as "相关技术" when the real technology is known; write "Unity3D 引擎与 C# 脚本技术".
-3. Size the sections. Each 二级节 gets at least 600 words so it can be written as 3–6 paragraphs; each 三级小节 gets at least 300 words. A chapter usually has 3–5 节, so a 12000-word body has about 20 节 in total. Merge thin topics into a neighbouring section instead of giving them their own heading.
+3. Size the sections. Each 二级节 gets at least 600 words and is written as 3–6 paragraphs directly under its heading. A chapter usually has 3–5 节, so a 12000-word body has about 20 节 in total. Merge thin topics into a neighbouring section instead of giving them their own heading. Use 三级小节 only in the design and implementation chapters, where one section covers several parallel modules; each 小节 then gets at least 400 words.
 4. Assign word budgets using the type template's 字数分配 table, or the ratios in `references/word-budget.md` for the other types, scaled to the user's total. Budget at the section level; chapter totals must add up to the overall target.
 5. For each section, note what it covers and the figures or tables it is expected to hold. This becomes the input to figure planning.
-6. Write `plan/大纲.md` and `plan/字数分配.json` in the thesis project folder (create `<论文项目>/plan/` if needed).
+6. Write `plan/大纲.md` and `plan/字数分配.json` in the thesis project folder (create `<论文项目>/plan/` if needed). `大纲.md` holds the heading tree with budgets and each section's notes.
 7. Show the outline in chat as a compact tree with word counts, ask the user to confirm or edit, and remind them to send it to their supervisor.
 
 ## Output Files
@@ -41,13 +43,23 @@ Ask only for what blocks a usable outline. Typical blocking questions: total wor
 
 论文类型：系统设计与实现　项目状态：已实现　目标字数：12000
 
-## 第1章 绪论（1500）
-### 1.1 研究背景（400）— 来源：文献[综述]
-### 1.2 研究目的及意义（300）— 来源：文献、开题报告
+## 第1章 绪论（1600）
+### 1.1 研究背景与意义（600）
+要点：农场类游戏的玩家群体与玩法特点；独立开发用 Unity 实现的价值。
 ...
 ## 第4章 系统设计（3000）
-### 4.1 系统总体架构设计（600）— 来源：源码目录结构 — 图：系统总体架构图
-### 4.3 数据存储设计（700）— 来源：存档脚本 — 表：存档数据结构表
+### 4.1 系统总体架构设计（700）— 图：系统总体架构图
+要点：分层结构，各层职责与调用关系。
+### 4.2 功能模块设计（1200）
+#### 4.2.1 种植模块设计（400）— 图：作物生长状态图
+#### 4.2.2 背包与商店模块设计（400）— 表：物品数据字段表
+#### 4.2.3 存档模块设计（400）— 图：存档流程图
+...
+## 第6章 系统测试（1800）
+### 6.1 测试环境与功能测试（600）— 表：测试环境表、功能测试用例表（关联 F 编号）
+### 6.2 性能测试（600）— 表：帧率与加载时间测试结果
+### 6.3 测试结论（600）
+要点：逐条对照第3章 F/N 需求，写明测得值和是否达到。
 ...
 ```
 
@@ -65,9 +77,9 @@ Ask only for what blocks a usable outline. Typical blocking questions: total wor
 
 ## Hard Rules
 
-- Three heading levels at most inside the body (章 / 节 / 小节).
+- Three heading levels at most inside the body (章 / 节 / 小节); most sections stop at 节.
 - Each of chapters 2 to 5 carries one main research task; do not split one task across chapters or stack two tasks in one.
-- Plan every section the type template calls for, including 测试, 实验, and 性能 sections.
+- Plan every section the type template calls for, including 测试, 实验, and 性能 sections. The test conclusion is its own section of at least 600 words that checks each requirement.
 - Keep innovation claims modest and checkable.
 - Abstract, references, and acknowledgements are not part of the word budget unless the school counts them.
 - Stop after the outline. Do not start chapter drafting until the user confirms.
