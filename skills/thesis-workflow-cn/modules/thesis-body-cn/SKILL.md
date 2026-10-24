@@ -14,7 +14,7 @@ Write the thesis body chapter by chapter, one file per chapter, as the finished 
 Before drafting, confirm these exist; if not, route back:
 
 - `plan/大纲.md` and `plan/字数分配.json` confirmed by the user → else `modules/thesis-outline-cn`.
-- `materials/项目理解.md` confirmed and `materials/素材缺口清单.md` written → else `modules/thesis-materials-cn`. Pure literature/argument theses may skip the project scan but still need a gap list.
+- `materials/项目理解.md` confirmed → else `modules/thesis-materials-cn`. Pure literature/argument theses skip this.
 - Literature records (`literature/题录摘要.md` or equivalent from `cnki-cssci-search`) → else `modules/cnki-cssci-search`.
 
 ## Drafting Order
@@ -33,13 +33,13 @@ Each chapter is derived from the finished chapter before it, so chapters are wri
 5. 摘要 / Abstract / 关键词
 6. 参考文献 list (generated from citations actually used) and 致谢 (short template, user fills in names)
 
-Draft all chapters in this order in one pass, then report per chapter: file path, word count vs. budget, citations used, figures/tables referenced, screenshots owed, new placeholders.
+Draft all chapters in this order in one pass, then report per chapter: file path, word count vs. budget, citations used, figures/tables referenced.
 
 ## Per-Chapter Procedure
 
-1. Re-read this chapter's outline entries, budget, gap rows, relevant parts of 项目理解.md, and the finished chapters it builds on (for 系统设计, the requirement list; for 系统实现, the design modules; for 系统测试, the requirements and their quantified targets).
+1. Re-read this chapter's outline entries, budget, relevant parts of 项目理解.md, and the finished chapters it builds on (for 系统设计, the requirement list; for 系统实现, the design modules; for 系统测试, the requirements and their quantified targets).
 2. Pick citations for the chapter from the literature records only. Note each paper's actual claim from its abstract; never cite a paper for something its abstract does not support.
-3. Write the chapter into `chapters/NN-章名.md`. Follow `references/writing-rules.md`. For chapter content, follow the matching type template in `../../references/paper-types/`: its 各章写法 steps, the variant for this topic, its figure plan, and its 句型框架 as sentence skeletons to fill with the user's own content. For other types, use `references/chapter-guides.md`.
+3. Write the chapter into `chapters/NN-章名.md`, filling each section to its budget: a 600-word section is 3–4 paragraphs of 150–300 words, plus its figures and tables with a paragraph explaining each. Follow `references/writing-rules.md`. For chapter content, follow the matching type template in `../../references/paper-types/`: its 各章写法 steps, the variant for this topic, its figure plan, and its 句型框架 as sentence skeletons to fill with the user's own content. For other types, use `references/chapter-guides.md`.
 4. Insert figures and tables with planned filenames (e.g. `../figures/architecture.png`) and always mention them in text before they appear. Add new needs to `plan/图表清单.md` for `modules/thesis-figures-cn`.
 5. Run a quick count:
 
@@ -61,7 +61,7 @@ Draft all chapters in this order in one pass, then report per chapter: file path
 - The functions described match the project code and 项目理解.md; extensions the project does not have go into 展望.
 - Code snippets come from the user's project, shortened with `// ……` where needed. When there is no project code, write snippets that match the design chapter's classes, methods, and data structures.
 - Test cases, results, and data are written in final form: every result column filled, every number consistent with the requirements, the design parameters, and the other chapters. The text is written in the author's voice about completed work.
-- Keep each chapter within ±15% of its budget. Reach the budget with substance (design reasons, flow explanation, figure/table interpretation), not padding.
+- Keep each chapter and each section within ±15% of its budget. Reach the budget with substance (design reasons, flow explanation, figure/table interpretation), not padding.
 - Use the school's terminology if given; otherwise keep terms consistent with the outline and 项目理解.md.
 
 ## References

@@ -14,10 +14,8 @@ Use this compact handoff format between thesis workflow stages.
 - 论文项目: thesis project folder path (from stage 5 on).
 - 大纲与字数: `plan/大纲.md` and `plan/字数分配.json` status (draft / user-confirmed / supervisor-confirmed) and total target.
 - 素材: `materials/项目理解.md` confirmation status and the project/data paths it was built from.
-- 待补缺口: open blocking gaps and the count of `【待补充】` placeholders.
 - 图表: `plan/图表清单.md` status, rendered count, screenshots still owed by the user.
 - 章节进度: chapters drafted with word count vs. budget.
-- 不能声称: features the project does not have, references outside the literature records, or school requirements the user has not given.
 - 下一步: one concrete next action and the skill that should handle it.
 - 继续确认: the exact yes/no question asked before entering the next major stage.
 
@@ -42,7 +40,7 @@ Outline to materials:
 The user has confirmed the outline. If the user wants to wait for supervisor feedback, stop here and record it.
 
 Materials to drafting:
-The user has confirmed 项目理解.md (or explicitly said the thesis has no project materials), and every blocking gap is filled, accepted as a placeholder, or removed from the outline. Literature records are in `literature/`.
+The user has confirmed 项目理解.md (or explicitly said the thesis has no project materials). Literature records are in `literature/`.
 
 Drafting to figures:
 All chapter files exist, or the user asked to make figures for finished chapters first.
@@ -51,7 +49,7 @@ Figures to QC:
 Agent-made figures render without errors; owed screenshots are listed.
 
 QC to Word:
-`thesis_qc.py` reports no blocking issues, or the user explicitly accepts the remaining ones for an interim Word draft.
+The QC findings are fixed in the chapter files. Screenshots the user has not captured yet show as image boxes in Word.
 
 ## Default Next-Step Questions
 

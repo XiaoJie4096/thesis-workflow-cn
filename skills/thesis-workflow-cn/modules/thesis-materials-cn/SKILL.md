@@ -1,13 +1,13 @@
 ---
 name: thesis-materials-cn
-description: Collect and verify the real materials a Chinese undergraduate thesis body depends on before drafting. Use when the user has source code, a Unity/Web/App project, screenshots, survey data, experiment results, interview notes, or design documents for their thesis, or when you need to know what is missing (素材缺口, 缺什么材料, 读我的项目, 项目理解) before writing 正文. Produces materials/项目理解.md and materials/素材缺口清单.md.
+description: Read the user's project and materials before a Chinese undergraduate thesis body is drafted. Use when the user has source code, a Unity/Web/App project, screenshots, survey data, experiment results, interview notes, or design documents for their thesis, or asks 读我的项目, 项目理解, 截图清单 before writing 正文. Produces materials/项目理解.md and materials/截图清单.md.
 ---
 
 # Thesis Materials CN
 
 ## Core Positioning
 
-The thesis describes the system the user actually built. This stage reads the user's project and materials, writes down what the project is in the user's own terms, and lists what each outline section will draw on. Drafting starts only after the user confirms the project summary.
+The thesis describes the system the user built. This stage reads the user's project and materials and writes down what the project is in the user's own terms. Drafting starts after the user confirms the project summary.
 
 ## Inputs
 
@@ -28,9 +28,7 @@ The thesis describes the system the user actually built. This stage reads the us
 
 3. Write `materials/项目理解.md` using the four information classes below, then show the user a short version and ask them to correct it. This confirmation is mandatory: the design and implementation chapters are built on it, so a misread module carries through the whole thesis.
 
-4. Compare the confirmed outline against the evidence and write `materials/素材缺口清单.md` (Gap Report). Every section in the outline gets a status.
-
-5. Tell the user which gaps block drafting (the project itself is unclear) and which screenshots they will capture later.
+4. Write `materials/截图清单.md`: for each running-screen figure the outline plans, the target filename under `figures/`, the section that uses it, and exactly what screen and state it shows.
 
 ## Four Information Classes
 
@@ -62,28 +60,23 @@ Label every statement in 项目理解.md with one of these:
 1. ……
 ```
 
-## 素材缺口清单.md Format
+## 截图清单.md Format
 
 ```markdown
-# 素材缺口清单
+# 截图清单
 
-| 大纲位置 | 需要的材料 | 现状 | 处理方式 | 阻塞写作 |
-|---|---|---|---|---|
-| 5.2 种植系统实现 | 种植过程运行截图 2 张 | 无 | 用户截图，先放占位 | 否 |
-| 6.3 性能测试 | 帧率测试数据 | 无 | 按完成状态写出 | 否 |
-| 2.1 Unity3D 引擎 | 相关文献 | 文献库已有 3 篇 | 直接引用 | 否 |
+| 文件 | 所在节 | 画面内容 |
+|---|---|---|
+| figures/farm-planting.png | 5.2 种植系统实现 | 已播种的地块，三种作物处于不同生长阶段，界面显示背包 |
 ```
-
-Status values: 已有 / 部分 / 无. Handling options: 直接使用, 用户补充, 先放占位, 按完成状态写出, 写进展望.
 
 ## Hard Rules
 
 - A feature counts as implemented when the code or the user confirms it.
-- Test results, performance numbers, and similar data the user has not provided are written in final form during drafting; record them in the gap list as 按完成状态写出.
-- Screenshots are taken by the user. List exactly what each screenshot should show and its target filename under `figures/`.
+- Screenshots are taken by the user later; the chapters keep their image references.
 - Do not copy large code blocks into the thesis plan; record file paths and function names.
 - Do not send the user's source code to external services.
 
 ## Handoff
 
-Pass to drafting: the confirmed 项目理解.md, the gap list, and the list of blocking gaps already resolved or explicitly accepted as placeholders.
+Pass to drafting: the confirmed 项目理解.md and 截图清单.md.

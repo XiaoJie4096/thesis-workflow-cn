@@ -13,7 +13,7 @@
 - `literature-review-cn`：基于用户提供或实际检索到的文献记录和摘要撰写中文文献综述。
 - `thesis-proposal-cn`：中文本科开题报告撰写。
 - `thesis-outline-cn`：正文三级大纲和按节字数分配。
-- `thesis-materials-cn`：读取项目代码、截图、数据，输出项目理解（待用户确认）和素材缺口清单。
+- `thesis-materials-cn`：读取项目代码、截图、数据，输出项目理解（待用户确认）和截图清单。
 - `thesis-body-cn`：按"需求→设计→实现→测试"逐章推导写正文（Markdown），按最终提交的完成稿写，测试结果和数据写成完成状态。
 - `thesis-figures-cn`：架构图、模块图、流程图、E-R 图、类图等用 Mermaid 生成，数据图用 matplotlib 生成，截图列清单交给用户。
 - `thesis-qc-cn`：脚本检查字数、引用、图表编号、占位和模板化表达，再按格式审查、指导老师、盲审专家、事实核查四个角色审阅。
@@ -73,7 +73,7 @@ Claude Code 用户把同一个目录链接到 `%USERPROFILE%\.claude\skills\thes
 3. 文献综述写作并转 Word
 4. 开题报告写作并转 Word
 5. 正文大纲与字数分配（建议发给指导老师确认）
-6. 素材整理与缺口清单（读项目代码、截图、数据）
+6. 素材整理与截图清单（读项目代码、截图、数据）
 7. 分章写作（按顺序一次写完，最后统一汇报）
 8. 图表制作
 9. 质检与模拟盲审
@@ -93,7 +93,7 @@ Claude Code 用户把同一个目录链接到 `%USERPROFILE%\.claude\skills\thes
 ```text
 论文/
 ├── plan/        大纲.md、字数分配.json、图表清单.md
-├── materials/   项目清单.md、项目理解.md、素材缺口清单.md
+├── materials/   项目清单.md、项目理解.md、截图清单.md
 ├── literature/  题录摘要.md
 ├── chapters/    00-摘要.md、01-绪论.md …… 90-参考文献.md、91-致谢.md
 ├── figures/     src/*.mmd、src/*.py、*.png

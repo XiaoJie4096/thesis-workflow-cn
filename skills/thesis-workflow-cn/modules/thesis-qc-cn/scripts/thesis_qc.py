@@ -72,6 +72,7 @@ class Chapter:
     is_refs: bool = False
     paragraphs: list[tuple[int, str]] = field(default_factory=list)   # (line no, text)
     list_items: int = 0
+    sections: list[dict] = field(default_factory=list)   # level-2 sections: title, words, paras
 
 
 def count_words(text: str) -> int:
@@ -153,6 +154,8 @@ def scan(files: list[Path], rep: Report):
             nonlocal para
             if para and cur is not None and not cur.is_refs:
                 cur.paragraphs.append((para_start, "".join(para)))
+                if cur.sections:
+                    cur.sections[-1]["paras"] += 1
             para = []
 
         for i, raw in enumerate(lines, 1):
@@ -187,6 +190,8 @@ def scan(files: list[Path], rep: Report):
                     chapters.append(cur)
                 elif cur is not None:
                     cur.words += count_words(title)
+                    if level == 2:
+                        cur.sections.append({"title": title, "words": 0, "paras": 0})
                 continue
             if cur is None:
                 cur = Chapter(file=f, title=f.stem)
@@ -231,13 +236,18 @@ def scan(files: list[Path], rep: Report):
                     if not pending_tab:
                         rep.warn(f"{f.name}:{i} 表格缺少标题行（在表格上方写“表：标题”）")
                     pending_tab = None
-                cur.words += count_words(re.sub(r"[|:\-]", " ", line))
+                n = count_words(re.sub(r"[|:\-]", " ", line))
+                cur.words += n
+                if cur.sections:
+                    cur.sections[-1]["words"] += n
                 continue
             if line.startswith("$$"):
                 flush()
                 continue
 
             cur.words += count_words(line)
+            if cur.sections:
+                cur.sections[-1]["words"] += count_words(line)
             for cm in RE_CITE.finditer(line):
                 for n in expand_cite(cm.group(1)):
                     cites.append((n, f, i))
@@ -258,9 +268,12 @@ def check_words(chapters: list[Chapter], budget: dict | None, rep: Report) -> No
     total = sum(c.words for c in body)
     rows = ["| 章节 | 实际字数 | 目标字数 | 偏差 |", "|---|---:|---:|---:|"]
     targets = {}
+    sec_targets = {}
     if budget:
         for item in budget.get("chapters", []):
             targets[norm_title(item["title"])] = int(item["target"])
+            for sec in item.get("sections", []):
+                sec_targets[norm_title(sec["title"])] = int(sec["target"])
     for c in body:
         t = targets.get(norm_title(c.title))
         if t:
@@ -270,6 +283,13 @@ def check_words(chapters: list[Chapter], budget: dict | None, rep: Report) -> No
                 rep.warn(f"字数偏差：{c.title} 实际 {c.words}，目标 {t}（{dev:+.0%}，超过 ±15%）")
         else:
             rows.append(f"| {c.title} | {c.words} | - | - |")
+    for c in body:
+        for sec in c.sections:
+            t = sec_targets.get(norm_title(sec["title"]))
+            if t and abs(sec["words"] - t) / t > 0.15:
+                rep.warn(f"小节字数偏差：{sec['title']} 实际 {sec['words']}，目标 {t}（{(sec['words'] - t) / t:+.0%}）")
+            if sec["paras"] < 2 and sec["words"] > 0 and not re.search(r"小结", sec["title"]):
+                rep.warn(f"{sec['title']} 只有 {sec['paras']} 个正文段落，一节宜写 3–6 段")
     goal = budget.get("total") if budget else None
     rows.append(f"| **合计** | **{total}** | {goal or '-'} | {f'{(total - goal) / goal:+.0%}' if goal else '-'} |")
     if goal and total < goal * 0.95:
@@ -316,7 +336,7 @@ def check_figures_tables(figures, tables, mentions, rep: Report) -> None:
     for fg in figures:
         status = "正常" if fg["src"].exists() else "图片缺失"
         if not fg["src"].exists():
-            rep.block(f"{fg['label']} 图片文件不存在：{fg['src']}")
+            rep.warn(f"{fg['label']} 图片待补：{fg['src'].name}")
         if not fg["caption"]:
             rep.warn(f"{fg['label']} 没有图题（写在 ![图题](路径) 的方括号里）")
         lines.append(f"| {fg['label']} | {fg['caption'] or '（缺）'} | {fg['src'].name} | {status} |")

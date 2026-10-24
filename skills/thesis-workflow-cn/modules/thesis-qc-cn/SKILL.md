@@ -23,9 +23,9 @@ It checks:
 |---|---|
 | Citation `[n]` with no matching reference entry | Yes |
 | Reference that cannot be traced to a literature record title | Yes |
-| Figure file missing | Yes |
 | Text mentions 图N-M / 表N-M that does not exist | Yes |
-| Word count per chapter vs. budget (±15%), total < 95% | No |
+| Figure file missing (screenshot not captured yet) | No |
+| Word count per chapter and per section vs. budget (±15%), total < 95%, sections with fewer than 2 paragraphs | No |
 | Uncited references, numbering not in first-appearance order, gaps in reference numbers | No |
 | Figures/tables never mentioned in text, tables without caption | No |
 | `【待补充：…】` placeholders still present | No (must be zero before submission) |
@@ -47,9 +47,8 @@ When subagents are available, run the four roles in parallel with the same input
 ## Fix Loop
 
 1. Merge findings into `qc/审阅意见.md`, sorted 必须修改 / 建议修改 / 可选.
-2. Show the user the 必须修改 list and the placeholders that only they can fill.
-3. Fix the findings directly in the chapter files, keeping test results and data in final form and consistent across chapters.
-4. Re-run Layer 1. Repeat until there are no blocking issues; the user decides when the 建议修改 items are done.
+2. Fix the findings directly in the chapter files, keeping test results and data in final form and consistent across chapters.
+3. Re-run Layer 1 until it reports no blocking issues, then show the user what was changed.
 
 ## Before Submission Checklist
 

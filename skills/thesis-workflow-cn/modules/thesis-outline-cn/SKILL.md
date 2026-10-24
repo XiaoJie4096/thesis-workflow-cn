@@ -26,9 +26,9 @@ Ask only for what blocks a usable outline. Typical blocking questions: total wor
 
 1. Classify the thesis type and pick the base pattern from `references/outline-patterns.md`. For 系统设计与实现、算法模型改进、工程设计, it points to the type template in `../../references/paper-types/`; take the chapter skeleton, the variant matching the topic, and the word allocation from that template. Reuse the proposal's 论文提纲 when present; refine it instead of replacing it.
 2. Map every chapter and section to the concrete topic. No generic headings such as "相关技术" when the real technology is known; write "Unity3D 引擎与 C# 脚本技术".
-3. Check feasibility against project status. If the project is planned or partial, sections about implementation and testing must be framed as design, prototype, or test plan. Do not create sections that need data, experiments, or features the user does not have.
+3. Size the sections. Each 二级节 gets at least 600 words so it can be written as 3–6 paragraphs; each 三级小节 gets at least 300 words. A chapter usually has 3–5 节, so a 12000-word body has about 20 节 in total. Merge thin topics into a neighbouring section instead of giving them their own heading.
 4. Assign word budgets using the type template's 字数分配 table, or the ratios in `references/word-budget.md` for the other types, scaled to the user's total. Budget at the section level; chapter totals must add up to the overall target.
-5. For each section, list its main evidence source (文献 / 源码 / 截图 / 数据 / 用户口述) and the figures or tables it is expected to hold. This becomes the input to the materials gap check and figure planning.
+5. For each section, note what it covers and the figures or tables it is expected to hold. This becomes the input to figure planning.
 6. Write `plan/大纲.md` and `plan/字数分配.json` in the thesis project folder (create `<论文项目>/plan/` if needed).
 7. Show the outline in chat as a compact tree with word counts, ask the user to confirm or edit, and remind them to send it to their supervisor.
 

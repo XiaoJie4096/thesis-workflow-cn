@@ -21,7 +21,7 @@ After each stage is completed, stop and ask the user whether to continue to the 
 - Chinese literature review drafting or polishing: `modules/literature-review-cn/SKILL.md`
 - Chinese undergraduate thesis proposal drafting or polishing: `modules/thesis-proposal-cn/SKILL.md`
 - Thesis body outline and word budget: `modules/thesis-outline-cn/SKILL.md`
-- Project materials, project understanding, and gap report: `modules/thesis-materials-cn/SKILL.md`
+- Project materials, project understanding, and screenshot list: `modules/thesis-materials-cn/SKILL.md`
 - Body chapter drafting in Markdown: `modules/thesis-body-cn/SKILL.md`
 - Figures (Mermaid diagrams, matplotlib charts, screenshot lists) and tables: `modules/thesis-figures-cn/SKILL.md`
 - Mechanical QC and role-based review: `modules/thesis-qc-cn/SKILL.md`
@@ -41,7 +41,7 @@ If a listed module is unavailable in the current environment, continue manually 
 2. Route to the earliest missing stage. Do not ask the user to restate information that is already present in the thread.
 3. Produce the stage output that can become the next stage input.
 4. For literature review and proposal stages, create both the text deliverable and a Word `.docx` deliverable by default unless the user explicitly requests text only.
-5. At each transition, summarize the handoff in a compact "阶段交接" block: confirmed title, scope, evidence/materials, output files, open gaps, and next recommended action.
+5. At each transition, summarize the handoff in a compact "阶段交接" block: confirmed title, scope, materials, output files, and next recommended action.
 6. Ask a concrete next-step question after each completed stage, using the next stage in the default chain.
 7. Preserve confirmed constraints across stages, especially implementation status, thesis type, word count, template requirements, and citation rules.
 
@@ -54,7 +54,7 @@ Use this chain unless the user asks to skip or start from a later stage:
 3. 文献综述写作并转 Word: read `modules/literature-review-cn/SKILL.md`, then `modules/docx-editor-cn/SKILL.md`
 4. 开题报告写作并转 Word: read `modules/thesis-proposal-cn/SKILL.md`, then `modules/docx-editor-cn/SKILL.md`
 5. 正文大纲与字数分配: read `modules/thesis-outline-cn/SKILL.md`
-6. 素材整理与缺口清单: read `modules/thesis-materials-cn/SKILL.md`
+6. 素材整理与截图清单: read `modules/thesis-materials-cn/SKILL.md`
 7. 分章写作: read `modules/thesis-body-cn/SKILL.md`
 8. 图表制作: read `modules/thesis-figures-cn/SKILL.md`
 9. 质检与审阅: read `modules/thesis-qc-cn/SKILL.md`
@@ -71,7 +71,7 @@ From stage 5 on, keep all thesis-body artifacts in one project folder (ask the u
 ```text
 <论文项目>/
 ├── plan/        大纲.md, 字数分配.json, 图表清单.md
-├── materials/   项目清单.md, 项目理解.md, 素材缺口清单.md, 截图清单.md
+├── materials/   项目清单.md, 项目理解.md, 截图清单.md
 ├── literature/  题录摘要.md and other literature records from stage 2
 ├── chapters/    00-摘要.md, 01-绪论.md, ..., 90-参考文献.md, 91-致谢.md
 ├── figures/     src/*.mmd, src/*.py, rendered *.png, user screenshots
@@ -90,10 +90,10 @@ At the end of each completed stage, ask only one concise continuation question:
 - After literature review Word output: "文献综述和 Word 文档已完成。是否进入开题报告阶段？我会基于题目和综述写开题报告并自动转成 Word。"
 - After proposal Word output: "开题报告和 Word 文档已完成。是否进入论文正文阶段？我会先做正文大纲和字数分配，确认后再写。"
 - After outline confirmation: "大纲和字数分配已确认（建议先发给指导老师看）。是否开始整理项目素材？请告诉我项目代码、截图、数据所在的文件夹。"
-- After materials confirmation: "项目理解和素材缺口清单已完成。是否开始写正文？我会按顺序写完全部章节，最后统一汇报。"
-- After all chapters: "正文各章已完成（共 N 字，目标 M 字，待补充 K 处）。是否生成图表并渲染？"
+- After materials confirmation: "项目理解和截图清单已完成。是否开始写正文？我会按顺序写完全部章节，最后统一汇报。"
+- After all chapters: "正文各章已完成（共 N 字，目标 M 字）。是否生成图表并渲染？"
 - After figures: "图已渲染，截图清单已列出。是否进入质检和模拟盲审？"
-- After QC: "质检完成，阻塞问题 N 个、待补充 M 处。是否修改后生成整篇 Word？"
+- After QC: "质检完成，问题已修改。是否生成整篇 Word？"
 - After full Word output: "整篇论文 Word 已生成。请在 Word 中更新目录并检查版式；是否还需要按学校模板调整格式？"
 
 If the user says yes, continue with the next stage. If the user says no, stop and keep the handoff ready for later resumption.
@@ -157,9 +157,9 @@ Exit with `plan/大纲.md` and `plan/字数分配.json` confirmed by the user. R
 
 Read `modules/thesis-materials-cn/SKILL.md` when the thesis depends on a real project, data, survey, or case.
 
-Exit with `materials/项目理解.md` confirmed by the user and `materials/素材缺口清单.md`. Blocking gaps must be either filled, accepted as placeholders, or removed from the outline.
+Exit with `materials/项目理解.md` confirmed by the user and `materials/截图清单.md`.
 
-For argument-based theses with no project, this stage shrinks to a short gap list of evidence each chapter needs.
+For argument-based theses with no project, skip this stage.
 
 ### Stage 7: Chapter Drafting
 
@@ -171,13 +171,13 @@ Exit when every outline chapter has a file, citations are renumbered by first ap
 
 Read `modules/thesis-figures-cn/SKILL.md`. Produce `plan/图表清单.md`, figure sources in `figures/src/`, rendered PNGs, and the screenshot list for the user.
 
-Exit when all agent-made figures render, and every missing screenshot or data chart is listed with its placeholder still in the chapter.
+Exit when all agent-made figures and data charts render and every screenshot the user still owes is in 截图清单.md.
 
 ### Stage 9: QC and Review
 
 Read `modules/thesis-qc-cn/SKILL.md`. Run `thesis_qc.py`, then the four-role review, then fix with the user.
 
-Exit when there are no blocking issues. Remaining placeholders may exist only if the user knowingly defers them.
+Exit when the findings are fixed in the chapter files.
 
 ### Stage 10: Full Thesis Word
 
@@ -187,7 +187,7 @@ Read `modules/docx-editor-cn/SKILL.md` and build:
 node modules/docx-editor-cn/scripts/md2docx_thesis.js <论文项目>/chapters -o <论文项目>/output/论文.docx [--format format.json]
 ```
 
-Report the script's counts (chapters, figures, tables, formulas, placeholders, missing images). Tell the user to open the file in Word, update the TOC field, and check layout by eye; the script cannot verify visual layout. Cover pages, declarations, and school-specific front matter come from the school template.
+The output is the full thesis, named `论文.docx`. Report the script's counts (chapters, figures, tables, formulas, screenshots still to insert). Tell the user to open the file in Word, update the TOC field, and check layout by eye; the script cannot verify visual layout. Cover pages, declarations, and school-specific front matter come from the school template.
 
 ### Word Handling Inside Stages
 
