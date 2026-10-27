@@ -27,7 +27,15 @@ Each chapter is derived from the finished chapter before it, so chapters are wri
    - 系统设计 derives its modules, data, and flows from those requirements and names the requirement IDs each module serves.
    - 系统实现 follows the design chapter's module order and names, and shows how each design decision is realized in code.
    - 系统测试 writes cases that cite requirement IDs and cover every requirement; the conclusion checks each requirement and each quantified target.
-   - For other types the same chain holds: 改进方法 → 实验 verifies each improvement point; 方案 → 设计计算 → 校核仿真 → 试验 checks each calculated parameter.
+   - For other types the same chain holds, with the items numbered where they are first stated:
+     - 算法改进：改进方法 → 实验 verifies each improvement point.
+     - 工程设计：方案 → 设计计算 → 校核仿真 → 试验 checks each calculated parameter.
+     - 实证：假设 H1… → 研究设计 → 实证结果 judges each hypothesis.
+     - 实验：研究问题 → 材料与方法 → 结果与讨论 answers each question with its measured indicators.
+     - 案例分析：问题诊断 → 对策 → 实施效果 answers each diagnosed problem.
+     - 法学：争点 → 规范分析 → 完善建议 answers each issue.
+     - 人文论述：each 分论点 chapter builds on the previous one, and the 结语 gathers them into one answer.
+     - 设计创作：调研需求 → 设计策略 → 设计实践 → 评价 checks each requirement.
 3. 绪论 (written after the core chapters so 主要研究内容 matches the finished chapters)
 4. 总结与展望
 5. 摘要 / Abstract / 关键词
@@ -39,7 +47,7 @@ Draft all chapters in this order in one pass, then report per chapter: file path
 
 1. Re-read this chapter's outline entries, budget, relevant parts of 项目理解.md, and the finished chapters it builds on (for 系统设计, the requirement list; for 系统实现, the design modules; for 系统测试, the requirements and their quantified targets).
 2. Pick citations for the chapter from the literature records only. Note each paper's actual claim from its abstract; never cite a paper for something its abstract does not support.
-3. Write the chapter into `chapters/NN-章名.md`, filling each section to its budget: a 600-word section is 3–4 paragraphs of 150–300 words, plus its figures and tables with a paragraph explaining each. Follow `references/writing-rules.md`. For chapter content, follow the matching type template in `../../references/paper-types/`: its 各章写法 steps, the variant for this topic, its figure plan, and its 句型框架 as sentence skeletons to fill with the user's own content. For other types, use `references/chapter-guides.md`.
+3. Write the chapter into `chapters/NN-章名.md`, filling each section to its budget: a 600-word section is 3–4 paragraphs of 150–300 words, plus its figures and tables with a paragraph explaining each. Follow `references/writing-rules.md`. For chapter content, follow the matching type template in `../../references/paper-types/`: its 各章写法 steps, the variant for this topic, its figure plan, and its 句型框架 as sentence skeletons to fill with the user's own content.
 4. Insert figures and tables with planned filenames (e.g. `../figures/architecture.png`) and always mention them in text before they appear. Add new needs to `plan/图表清单.md` for `modules/thesis-figures-cn`.
 5. Run a quick count:
 
@@ -52,7 +60,7 @@ Draft all chapters in this order in one pass, then report per chapter: file path
 ## Citation Handling
 
 - In drafts, cite with the literature record's index or title key if numbering is not final, then renumber once all chapters exist. Final text uses `[n]` in order of first appearance.
-- Typical undergraduate density: 15–30 references total, most in 绪论 and 相关技术; implementation chapters rarely cite.
+- Reference count and where citations concentrate follow the type template (usually 15–30 references for undergraduates).
 - Format references in GB/T 7714-2015 from the record fields. Do not fill in missing volume/issue/page numbers by guessing; leave `【待补充：页码】`.
 
 ## Hard Rules
@@ -68,5 +76,5 @@ Draft all chapters in this order in one pass, then report per chapter: file path
 
 - `references/markdown-conventions.md`: Markdown syntax for headings, figures, tables, formulas, citations, placeholders.
 - `references/writing-rules.md`: academic Chinese style and de-AI rules.
-- `references/chapter-guides.md`: chapter guidance for types without a template (实证、论述), plus 摘要 and 致谢.
-- `../../references/paper-types/*.md`: type templates for 系统设计与实现、算法模型改进、工程设计.
+- `references/chapter-guides.md`: general rules for 摘要, 致谢, and topics that fit no type template.
+- `../../references/paper-types/*.md`: type templates, one per thesis type; `../thesis-outline-cn/references/outline-patterns.md` lists them.

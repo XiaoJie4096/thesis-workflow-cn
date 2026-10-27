@@ -26,10 +26,10 @@ Ask only for what blocks a usable outline. Typical blocking questions: total wor
 
 ## Workflow
 
-1. Classify the thesis type and pick the base pattern from `references/outline-patterns.md`. For 系统设计与实现、算法模型改进、工程设计, it points to the type template in `../../references/paper-types/`; take the chapter skeleton, the variant matching the topic, and the word allocation from that template. Reuse the proposal's 论文提纲 when present; refine it instead of replacing it.
+1. Classify the thesis type with `references/outline-patterns.md` and open its type template in `../../references/paper-types/`; take the chapter skeleton, the variant matching the topic, and the word allocation from that template. Reuse the proposal's 论文提纲 when present; refine it instead of replacing it.
 2. Map every chapter and section to the concrete topic. No generic headings such as "相关技术" when the real technology is known; write "Unity3D 引擎与 C# 脚本技术".
-3. Size the sections. Each 二级节 gets at least 600 words and is written as 3–6 paragraphs directly under its heading. A chapter usually has 3–5 节, so a 12000-word body has about 20 节 in total. Merge thin topics into a neighbouring section instead of giving them their own heading. Use 三级小节 only in the design and implementation chapters, where one section covers several parallel modules; each 小节 then gets at least 400 words.
-4. Assign word budgets using the type template's 字数分配 table, or the ratios in `references/word-budget.md` for the other types, scaled to the user's total. Budget at the section level; chapter totals must add up to the overall target.
+3. Size the sections. Each 二级节 gets at least 600 words and is written as 3–6 paragraphs directly under its heading. A chapter usually has 3–5 节, so a 12000-word body has about 20 节 in total. Merge thin topics into a neighbouring section instead of giving them their own heading. Use 三级小节 only where one section covers several parallel items, such as modules in a design chapter, issues in a diagnosis, or measures in a countermeasure section; each 小节 then gets at least 400 words.
+4. Assign word budgets using the type template's 字数分配 table, scaled to the user's total; see `references/word-budget.md` for the adjustment rules. Budget at the section level; chapter totals must add up to the overall target.
 5. For each section, note what it covers and the figures or tables it is expected to hold. This becomes the input to figure planning.
 6. Write `plan/大纲.md` and `plan/字数分配.json` in the thesis project folder (create `<论文项目>/plan/` if needed). `大纲.md` holds the heading tree with budgets and each section's notes.
 7. Show the outline in chat as a compact tree with word counts, ask the user to confirm or edit, and remind them to send it to their supervisor.
@@ -79,14 +79,14 @@ Ask only for what blocks a usable outline. Typical blocking questions: total wor
 
 - Three heading levels at most inside the body (章 / 节 / 小节); most sections stop at 节.
 - Each of chapters 2 to 5 carries one main research task; do not split one task across chapters or stack two tasks in one.
-- Plan every section the type template calls for, including 测试, 实验, and 性能 sections. The test conclusion is its own section of at least 600 words that checks each requirement.
+- Plan every section the type template calls for, including 测试, 实验, 实证结果, and 评价 sections. The section that checks results against the earlier requirements, hypotheses, or problems is its own section of at least 600 words and covers each item.
 - Keep innovation claims modest and checkable.
 - Abstract, references, and acknowledgements are not part of the word budget unless the school counts them.
 - Stop after the outline. Do not start chapter drafting until the user confirms.
 
 ## References
 
-- `references/outline-patterns.md`: chapter patterns by thesis type with typical figures and tables.
+- `references/outline-patterns.md`: how to pick the thesis type and its template.
 - `../../references/paper-types/*.md`: full type templates (skeleton, variants, word allocation, chapter-by-chapter writing steps, figures, abstract, sentence frames, quality points).
-- `references/word-budget.md`: chapter and section ratios and adjustment rules.
+- `references/word-budget.md`: budget adjustment rules and the word-count method.
 - For the older proposal-stage outline rules, see `../thesis-proposal-cn/references/undergraduate-outline-rules.md`; keep the two consistent.

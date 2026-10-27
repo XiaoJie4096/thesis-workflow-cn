@@ -35,7 +35,7 @@ Word counting: CJK characters and punctuation plus Latin words, excluding Markdo
 
 ## Layer 2: Review
 
-Read the whole thesis and review it in these roles, one pass each. Use `references/review-rubric.md` for the checklist and output format. For 系统设计与实现、算法模型改进、工程设计, the 指导老师 also checks the chapter skeleton against the type template in `../../references/paper-types/`, and the 事实核查员 also checks each item of its 质量要点.
+Read the whole thesis and review it in these roles, one pass each. Use `references/review-rubric.md` for the checklist and output format. The 指导老师 also checks the chapter skeleton against the type template in `../../references/paper-types/`, and the 事实核查员 also checks each item of its 质量要点.
 
 1. **格式审查员**: structure, headings, figure/table/formula numbering, reference format (GB/T 7714-2015), abstract and keywords.
 2. **指导老师**: whether each chapter does its job, whether 绪论's research content matches what was done, whether design explains reasons, and the requirement chain: every requirement ID appears in a design module, its implementation, and at least one test case.

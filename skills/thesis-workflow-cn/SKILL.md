@@ -27,7 +27,7 @@ After each stage is completed, stop and ask the user whether to continue to the 
 - Mechanical QC and role-based review: `modules/thesis-qc-cn/SKILL.md`
 - Word document creation, template filling, `.docx` editing, and full-thesis Markdown → Word: `modules/docx-editor-cn/SKILL.md`
 
-Thesis type templates shared by the body-stage modules: `references/paper-types/system-design.md` (系统设计与实现), `references/paper-types/algorithm-improvement.md` (算法模型改进), `references/paper-types/engineering-design.md` (工程设计).
+Thesis type templates shared by the body-stage modules, in `references/paper-types/`: `system-design.md` (系统设计与实现), `algorithm-improvement.md` (算法模型改进), `engineering-design.md` (工程设计), `empirical.md` (实证研究), `experimental.md` (实验研究), `case-study.md` (案例分析对策研究), `law.md` (法学研究), `humanities.md` (人文论述), `design-creative.md` (设计创作策划方案).
 
 If a listed module is unavailable in the current environment, continue manually with the same stage boundaries and state the limitation. `$kimi-webbridge` remains an external browser-control skill and must still be read when the WorkBuddy CNKI module requires it.
 
