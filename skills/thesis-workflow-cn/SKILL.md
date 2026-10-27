@@ -90,7 +90,8 @@ At the end of each completed stage, ask only one concise continuation question:
 - After literature review Word output: "文献综述和 Word 文档已完成。是否进入开题报告阶段？我会基于题目和综述写开题报告并自动转成 Word。"
 - After proposal Word output: "开题报告和 Word 文档已完成。是否进入论文正文阶段？我会先做正文大纲和字数分配，确认后再写。"
 - After outline confirmation: "大纲和字数分配已确认（建议先发给指导老师看）。是否开始整理项目素材？请告诉我项目代码、截图、数据所在的文件夹。"
-- After materials confirmation: "项目理解和截图清单已完成。是否开始写正文？我会按顺序写完全部章节，最后统一汇报。"
+- After materials confirmation: "项目理解和截图清单已完成。是否开始写正文？有两种写法：A. 每写完一章停下来给你看，确认或修改后再写下一章（推荐）；B. 按顺序一次写完全部章节，最后统一汇报。不选的话按 A 进行。"
+- After each chapter in mode A: report that chapter and what to check in it, then ask "这一章有需要修改的吗？没有的话我接着写下一章。"
 - After all chapters: "正文各章已完成（共 N 字，目标 M 字）。是否生成图表并渲染？"
 - After figures: "图已渲染，截图清单已列出。是否进入质检和模拟盲审？"
 - After QC: "质检完成，问题已修改。是否生成整篇 Word？"
@@ -163,7 +164,7 @@ For argument-based theses with no project, skip this stage.
 
 ### Stage 7: Chapter Drafting
 
-Read `modules/thesis-body-cn/SKILL.md`. Draft all chapters in one pass, in the module's drafting order, into `chapters/*.md`.
+Read `modules/thesis-body-cn/SKILL.md`. Draft the chapters in the module's drafting order into `chapters/*.md`, chapter by chapter with a stop for the user's review after each (default), or in one pass if the user chose that.
 
 Exit when every outline chapter has a file, citations are renumbered by first appearance, and `90-参考文献.md` lists only cited records.
 

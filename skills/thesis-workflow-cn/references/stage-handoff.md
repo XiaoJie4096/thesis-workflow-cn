@@ -58,7 +58,8 @@ The QC findings are fixed in the chapter files. Screenshots the user has not cap
 - After literature review Word output: ask whether to enter proposal drafting and Word generation.
 - After proposal Word output: ask whether to enter the thesis body (outline and word budget first) or stop.
 - After outline confirmation: ask for project/material paths and whether to start materials analysis.
-- After materials confirmation: ask whether to start chapter drafting.
+- After materials confirmation: ask whether to start chapter drafting, and whether to stop after each chapter for review (recommended, default) or draft all chapters in one pass.
+- After each chapter in chapter-by-chapter mode: report the chapter and what to check in it, and ask whether to revise it or continue.
 - After all chapters: report word count vs. budget per chapter and ask whether to produce figures.
 - After figures: ask whether to run QC and mock blind review.
 - After QC: ask whether to build the full thesis Word file.

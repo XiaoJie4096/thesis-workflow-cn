@@ -41,7 +41,19 @@ Each chapter is derived from the finished chapter before it, so chapters are wri
 5. 摘要 / Abstract / 关键词
 6. 参考文献 list (generated from citations actually used) and 致谢 (short template, user fills in names)
 
-Draft all chapters in this order in one pass, then report per chapter: file path, word count vs. budget, citations used, figures/tables referenced.
+## Drafting Mode
+
+Before the first chapter, ask the user which mode to use (if the user has not already said):
+
+> 有两种写法：
+> A. 每写完一章停下来给你看，确认或修改后再写下一章（推荐）
+> B. 按顺序一次写完全部章节，最后统一汇报
+> 不选的话按 A 进行。
+
+- **A, chapter by chapter (default):** after each chapter, stop and report: file path, word count vs. budget, citations used, figures/tables referenced, and what to check in this chapter because later chapters build on it (e.g. after 需求分析, the requirement list and quantified targets; after 系统设计, the module split and names). Write the next chapter after the user confirms or gives changes, and build it on the revised version. 摘要, 参考文献 and 致谢 are delivered together as the last part.
+- **B, one pass:** draft all chapters in order, then give the same report for every chapter.
+
+The user can switch modes at any point ("后面一口气写完" or "下一章停一下"). When the user revises a finished chapter that later finished chapters build on, update those later chapters to match and list what changed in each.
 
 ## Per-Chapter Procedure
 
