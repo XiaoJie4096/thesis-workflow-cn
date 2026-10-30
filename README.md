@@ -49,12 +49,12 @@ Claude Code 用户把同一个目录链接到 `%USERPROFILE%\.claude\skills\thes
 
 ### 正文阶段的依赖
 
-| 用途 | 依赖 | 安装 |
-|---|---|---|
-| 整篇论文转 Word | Node.js 18+ | `cd skills/thesis-workflow-cn/modules/docx-editor-cn && npm install` |
-| 结构图、流程图渲染 | Node.js 22+ + 本机 Chrome 或 Edge | 无需安装、无需联网，Mermaid 已内置在 `modules/thesis-figures-cn/vendor/mermaid/`（Node.js 较旧时自动改用 `npx` 下载 mermaid-cli） |
-| 数据图 | Python 3.9+、matplotlib | `pip install matplotlib` |
-| 质检、项目扫描 | Python 3.9+ | 只用标准库 |
+| 用途         | 依赖                             | 安装                                                                                                       |
+| ---------- | ------------------------------ | -------------------------------------------------------------------------------------------------------- |
+| 整篇论文转 Word | Node.js 18+                    | `cd skills/thesis-workflow-cn/modules/docx-editor-cn && npm install`                                     |
+| 结构图、流程图渲染  | Node.js 22+ + 本机 Chrome 或 Edge | 无需安装、无需联网，Mermaid 已内置在 `modules/thesis-figures-cn/vendor/mermaid/`（Node.js 较旧时自动改用 `npx` 下载 mermaid-cli） |
+| 数据图        | Python 3.9+、matplotlib         | `pip install matplotlib`                                                                                 |
+| 质检、项目扫描    | Python 3.9+                    | 只用标准库                                                                                                    |
 
 没有 Chrome/Edge 时，可以把生成的 `.mmd` 文件内容粘贴到 https://mermaid.live 手动导出 PNG。
 
@@ -145,6 +145,21 @@ skills/thesis-workflow-cn/SKILL.md
 ```text
 skills/thesis-workflow-cn/modules/
 ```
+
+## 参考与致谢
+
+本项目在正文写作、素材整理、图表制作和质量检查的流程设计中，参考了以下开源项目。感谢原作者公开分享设计思路与实践经验。
+
+| 来源                                                                                                                      | 参考的设计思路                                                | 本项目中的应用                                                                 |
+| ----------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------ | ----------------------------------------------------------------------- |
+| [wanshuiyin/Auto-claude-code-research-in-sleep（ARIS）](https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep) | 写作前先生成 Gap Report，识别素材缺口；用 `DATA_NEEDED` 标记缺失内容        | `thesis-materials-cn` 的素材缺口清单，以及早期缺失素材占位机制的设计参考；具体占位范围以当前写作规则为准         |
+| [zLanqing/codex-claude-academic-skills](https://github.com/zLanqing/codex-claude-academic-skills)                       | 区分原文或已有数据、用户确认内容、推断和建议性扩展                              | 项目理解中的 `【原文】`、`【用户确认】`、`【推断】`、`【建议】` 四类标注及相关写作规则                        |
+| [Imbad0202/academic-research-skills（ARS）](https://github.com/Imbad0202/academic-research-skills)                        | 多个审稿人角色分别审阅，并核查引用                                      | `thesis-qc-cn` 的四角色审阅与引用核查流程                                            |
+| [Norman-bury/research-writing-skill](https://github.com/Norman-bury/research-writing-skill)                             | 逐章写作、实验章节的数据前置条件、用 Python 脚本生成可复现的数据图，以及减少 AI 腔的具体表达规则 | `thesis-body-cn` 的写作顺序与前置条件设计、`thesis-figures-cn` 的数据图脚本流程，以及写作规则中的表达约束 |
+
+上述参考主要涉及流程和规则设计，未整句或整段照搬参考文档；部分简短标签与常用表达示例相近，包括四类信息标签及减少 AI 腔的例词。参考项目的代码未复制到本项目中。这里的说明依据已进行的文档比对：四个仓库的 README，以及 Norman 的 `writing-chapters`、`figures-diagram` 和 zLanqing 的 `research-writing-skill` 的 SKILL.md；未覆盖这些仓库的全部文件或代码。
+
+各参考项目的许可证以其仓库声明为准；其中 ARS 采用 CC BY-NC 许可。此处致谢不改变原项目的许可条件，也不代表原作者对本项目的认可或背书。如进一步使用或分发参考项目的文字、代码等内容，应遵守其对应许可证。
 
 ## 第三方代码
 
